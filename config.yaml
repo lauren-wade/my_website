@@ -69,8 +69,8 @@ params:
       - name: CV
         url: blogs/cv
     menu: Menu
-    subtitle: By HTML5 Up
-    title: Forty
+    subtitle: 
+    title: Home
   tiles:
     enable: yes
     showcase:
