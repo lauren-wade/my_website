@@ -1,14 +1,14 @@
 ---
-title: "Climate Change Project"
-date: '2017-10-31T21:28:43-05:00'
-description: ''
-draft: no
-image: null
-keywords: ''
-slug: climate
 categories:
-- ''
-- ''
+- ""
+- ""
+date: "2017-10-31T22:26:09-05:00"
+description: 
+draft: false
+image: pic09.jpg
+keywords: ""
+slug: climate
+title: Climate Project
 ---
 
 ```{r, setup, include=FALSE}

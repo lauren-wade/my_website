@@ -89,7 +89,7 @@ params:
       - image: pic11.jpg
         subtitle: 
         title: Climate Change Project
-        url: blogs/ipsum
+        url: blogs/climate
       - image: pic10.jpg
         subtitle: 
         title: Salary Assignment
