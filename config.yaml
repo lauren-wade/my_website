@@ -1,15 +1,15 @@
 baseURL: https://boring-lamarr-ca7b4d.netlify.app
 languageCode: en-us
-title: Lauren
-theme: Forty
+title: Forty
+theme: forty
 googleAnalytics: ''
 disqusShortname: ''
 params:
   banner:
     buttonText: Get Started
     subtitle: |-
-      Hi, my name is Lauren and this is my website showcasing my data analytics projects! Enjoy!
-    title: Lauren Wade 
+      Hi, my name is Lauren and this is my website showcasing my data anlytics projects! Enjoy!
+    title: Lauren Wade
   blog: {}
   contact:
     address:
@@ -37,13 +37,13 @@ params:
     copyright: Lauren Wade
     enable: yes
     quicklinks:
-      - alt: Home
+      - alt: HTML5 UP
         text: 'Design: '
         url: https://www.html5up.net
     social:
       - icon: fa-instagram
         label: Instagram
-        url: https://www.instagram.com/laurenwade_/
+        url: https://www.instagram.com/laurenwade_
       - icon: fa-github
         label: GitHub
         url: https://www.github.com/lauren-wade
@@ -57,6 +57,8 @@ params:
       - name: Get Started
         url: blogs
     button2:
+      - name: Log In
+        url: '#'
     links:
       - name: Home
         url: '#'
@@ -67,8 +69,8 @@ params:
       - name: CV
         url: blogs/cv
     menu: Menu
-    subtitle: 
-    title: Home
+    subtitle: By HTML5 Up
+    title: Forty
   tiles:
     enable: yes
     showcase:
@@ -80,14 +82,14 @@ params:
         subtitle: 
         title: My CV
         url: blogs/cv
-      - image: pic12.jpg
+      - image: pic012.jpg
         subtitle: 
         title: Pre-Program Assignment
         url: blogs/preprogram
       - image: pic11.jpg
         subtitle: 
         title: Climate Change Project
-        url: blogs/climate
+        url: blogs/ipsum
       - image: pic10.jpg
         subtitle: 
         title: Salary Assignment
@@ -96,4 +98,14 @@ params:
         subtitle: 
         title: Contact Me
         url: blogs/contact
-  
+  two:
+    buttonText: Get Started
+    enable: yes
+    subtitle: "Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero.
+      \n    Mauris aliquet magna magna sed nunc rhoncus pharetra. \n    Pellentesque
+      condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia
+      pellentesque lorem ipsum dolor. \n    Nullam et orci eu lorem consequat tincidunt.
+      Vivamus et sagittis libero.\n    Mauris aliquet magna magna sed nunc rhoncus
+      amet pharetra et feugiat tempus."
+    title: Massa libero
+    url: blogs

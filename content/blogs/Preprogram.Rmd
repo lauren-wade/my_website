@@ -1,0 +1,335 @@
+---
+title: "Preprogram Assignment"
+date: '2017-10-31T22:42:51-05:00'
+description: null
+draft: no
+image: null
+keywords: ''
+slug: preprogram
+categories:
+- ''
+- ''
+---
+
+```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
+#install.packages("gapminder")
+#install.packages("here")
+#install.packages("janitor")
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(gapminder)  # gapminder dataset
+library(here)
+library(janitor)
+```
+
+# Task 1: `gapminder` country comparison
+
+You have seen the `gapminder` dataset that has data on life expectancy, population, and GDP per capita for 142 countries from 1952 to 2007. To get a glimpse of the dataframe, namely to see the variable names, variable types, etc., we use the `glimpse` function. We also want to have a look at the first 20 rows of data.
+
+```{r}
+glimpse(gapminder)
+
+head(gapminder, 20) # look at the first 20 rows of the dataframe
+
+```
+
+Your task is to produce two graphs of how life expectancy has changed over the years for the `country` and the `continent` you come from.
+
+I have created the `country_data` and `continent_data` with the code below.
+
+```{r}
+country_data <- gapminder %>% 
+            filter(country == "United States") 
+
+continent_data <- gapminder %>% 
+            filter(continent == "Americas")
+```
+
+First, create a plot of life expectancy over time for the single country you chose. Map `year` on the x-axis, and `lifeExp` on the y-axis. You should also use `geom_point()` to see the actual data points and `geom_smooth(se = FALSE)` to plot the underlying trendlines. You need to remove the comments **\#** from the lines below for your code to run.
+
+```{r, lifeExp_one_country}
+plot1 <- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
+   geom_point() +
+   geom_smooth(se = FALSE)+
+   NULL 
+
+plot1
+```
+
+Next we need to add a title. Create a new plot, or extend plot1, using the `labs()` function to add an informative title to the plot.
+
+```{r, lifeExp_one_country_with_label}
+ plot1<- plot1 +
+   labs(title = "Life Expectancy in the United States Overtime ",
+       x = "Year",
+       y = "Life Expectancy") +
+   NULL
+
+
+ plot1
+```
+
+Secondly, produce a plot for all countries in the *continent* you come from. (Hint: map the `country` variable to the colour aesthetic. You also want to map `country` to the `group` aesthetic, so all points for each country are grouped together).
+
+```{r lifeExp_one_continent}
+ ggplot(continent_data, mapping = aes(x = year , y = lifeExp , colour=country , group = country))+
+   geom_point() + 
+   geom_smooth(se = FALSE) +
+   NULL
+
+```
+
+Finally, using the original `gapminder` data, produce a life expectancy over time graph, grouped (or faceted) by continent. We will remove all legends, adding the `theme(legend.position="none")` in the end of our ggplot.
+
+```{r lifeExp_facet_by_continent}
+ggplot(data = gapminder , mapping = aes(x = year , y = lifeExp , colour= continent))+
+  geom_point() + 
+  geom_smooth(se = FALSE) +
+  facet_wrap(~continent) +
+  theme(legend.position="none") + #remove all legends
+  NULL
+
+```
+
+Given these trends, what can you say about life expectancy since 1952? Again, don't just say what's happening in the graph. Tell some sort of story and speculate about the differences in the patterns.
+
+**Africa:** When looking at the scatterplot for the life expectancy in Africa since 1952 we can see that until 1990 the life expectancy was trending upwards with time. This could most likely be due to the rise in technology and medicine seen worldwide. From 1990 until present the life expectancy seems to stay stagnate, with the outliers still trending upward. This illistrates the socio-economic gap increasing between countries within Africa. As technology and medicine increases the richer countries are increasing their life expectancy quickly along side but the poorer countries are falling behind.
+
+**Americas:** In the Americas there is a pretty consistent trend upwards which can be attributed to the rise in technology and medicine. We do see some outliers that have a lower life expectancy than the average. These can be explained because the Americas consist of a lot of different countries that are developing at much different rates. If we were to split North America versus South America we would probably see these outliers more strongly as well. 
+
+**Asia:** Asia can be explained similarly to the US but at a larger scale. Asia is huge with countries at every possible level of 'developed'. Because of this we are going to see extreme outliers at the top and the bottom. What I find very interesting about this specific trend is that the lower outliers are remaining stagnent in the last forty or so years. This could be explained similarly to Africa where the more wealthy countries are increasing the socio-economic gap between the less wealthy countries. As the most wealthy countries continue to develop their techonoly and medicine at increasing rates it makes it much harder for the less wealthy countries to catch up. 
+
+**Europe:** Europe also shows a very intersting trend, where overtime they are decreasing the gap between countries and therefore decreasing their outliers. I am not from Europe so I haven't lived it but in the US we tend to talk about how Europe seems to be better at working together than we are. This could explain why the outliers have decreased overtime because the entire continent is increasing their technology and medicine at somewhat equal rates.
+
+**Oceania:** Oceania's trend can easily be explained because the continent does not contain as many countries as the others. Because of this we see less outliers and the trend is able to consistently move upwards across most to all countries.
+
+**Overall:** It is also very interesting to me that the two continent, Oceania and Europe, that have the smallest difference from the line of best fit happen to also have the highest life expectancy on average. More research would have to be done to make a real claim, but this could be a trend that other countries could learn from as well!
+
+# Task 2: Brexit vote analysis
+
+We will have a look at the results of the 2016 Brexit vote in the UK. First we read the data using `read_csv()` and have a quick glimpse at the data
+
+```{r load_brexit_data, warning=FALSE, message=FALSE}
+brexit_results <- read_csv(here::here("data","brexit_results.csv"))
+
+
+glimpse(brexit_results)
+```
+
+The data comes from [Elliott Morris](https://www.thecrosstab.com/), who cleaned it and made it available through his [DataCamp class on analysing election and polling data in R](https://www.datacamp.com/courses/analyzing-election-and-polling-data-in-r).
+
+Our main outcome variable (or y) is `leave_share`, which is the percent of votes cast in favour of Brexit, or leaving the EU. Each row is a UK [parliament constituency](https://en.wikipedia.org/wiki/United_Kingdom_Parliament_constituencies).
+
+To get a sense of the spread, or distribution, of the data, we can plot a histogram, a density plot, and the empirical cumulative distribution function of the leave % in all constituencies.
+
+```{r brexit_histogram, warning=FALSE, message=FALSE}
+
+# histogram
+ggplot(brexit_results, aes(x = leave_share)) + 
+  labs (title = "Brexit Results within Constituencies", subtitle = "Histogram", x = "Leave-Share",y = "Count") +
+  geom_histogram(binwidth = 2.5)
+
+# density plot-- think smoothed histogram
+ggplot(brexit_results, aes(x = leave_share)) +
+  labs (title = "Brexit Results within Constituencies", subtitle = "Density Plot", x = "Leave-Share",y = "Frequency") +
+  geom_density()
+
+
+# The empirical cumulative distribution function (ECDF) 
+ggplot(brexit_results, aes(x = leave_share)) +
+  labs (title = "Brexit Results within Constituencies", subtitle = "Empirical Cumulative Distribution (ECDF)", x = "Leave   -Share",y = "Cumulative Frequency") +
+  stat_ecdf(geom = "step", pad = FALSE) +
+  scale_y_continuous(labels = scales::percent)
+  
+
+
+```
+
+One common explanation for the Brexit outcome was fear of immigration and opposition to the EU's more open border policy. We can check the relationship (or correlation) between the proportion of native born residents (`born_in_uk`) in a constituency and its `leave_share`. To do this, let us get the correlation between the two variables
+
+```{r brexit_immigration_correlation}
+brexit_results %>% 
+  select(leave_share, born_in_uk) %>% 
+  cor()
+```
+
+The correlation is almost 0.5, which shows that the two variables are positively correlated.
+
+We can also create a scatterplot between these two variables using `geom_point`. We also add the best fit line, using `geom_smooth(method = "lm")`.
+
+```{r brexit_immigration_plot}
+ggplot(brexit_results, aes(x = born_in_uk, y = leave_share)) +
+  geom_point(alpha=0.3) +
+  
+  # add a smoothing line, and use method="lm" to get the best straight-line
+  geom_smooth(method = "lm") + 
+  
+  # use a white background and frame the plot with a black box
+  theme_bw() +
+  NULL
+```
+
+You have the code for the plots, I would like you to revisit all of them and use the `labs()` function to add an informative title, subtitle, and axes titles to all plots.
+
+What can you say about the relationship shown above? Again, don't just say what's happening in the graph. Tell some sort of story and speculate about the differences in the patterns.
+
+When looking at the scatterplot with the regression line, I first notice some fanning. This is my first clue that the relationship between the two variables, born in the UK and leave share, is not very strong. I would argue that to have a strong linear relationship our correlation needs to be above 0.7. Though there is some positive correlation shown it would not be enough for me to assume they are correlated. I also notice that our density plot is slightly skewed left quickly showing us that a majority of consticencies voted in favor of Brexit leaving the EU. Ovbisously we knew this was the case as it has already happened but the graphs back up the history with visual ease.  
+
+# Task 3: Animal rescue incidents attended by the London Fire Brigade
+
+[The London Fire Brigade](https://data.london.gov.uk/dataset/animal-rescue-incidents-attended-by-lfb) attends a range of non-fire incidents (which we call 'special services'). These 'special services' include assistance to animals that may be trapped or in distress. The data is provided from January 2009 and is updated monthly. A range of information is supplied for each incident including some location information (postcode, borough, ward), as well as the data/time of the incidents. We do not routinely record data about animal deaths or injuries.
+
+Please note that any cost included is a notional cost calculated based on the length of time rounded up to the nearest hour spent by Pump, Aerial and FRU appliances at the incident and charged at the current Brigade hourly rate.
+
+```{r load_animal_rescue_data, warning=FALSE, message=FALSE}
+
+url <- "https://data.london.gov.uk/download/animal-rescue-incidents-attended-by-lfb/8a7d91c2-9aec-4bde-937a-3998f4717cd8/Animal%20Rescue%20incidents%20attended%20by%20LFB%20from%20Jan%202009.csv"
+
+animal_rescue <- read_csv(url,
+                          locale = locale(encoding = "CP1252")) %>% 
+  janitor::clean_names()
+
+
+glimpse(animal_rescue)
+```
+One of the more useful things one can do with any data set is quick counts, namely to see how many observations fall within one category. For instance, if we wanted to count the number of incidents by year, we would either use `group_by()... summarise()` or, simply [`count()`](https://dplyr.tidyverse.org/reference/count.html)
+
+```{r, instances_by_calendar_year}
+
+animal_rescue %>% 
+  dplyr::group_by(cal_year) %>% 
+  summarise(count=n())
+
+animal_rescue %>% 
+  count(cal_year, name="count")
+
+```
+
+Let us try to see how many incidents we have by animal group. Again, we can do this either using group_by() and summarise(), or by using count()
+
+```{r, animal_group_percentages}
+animal_rescue %>% 
+  group_by(animal_group_parent) %>% 
+  
+  #group_by and summarise will produce a new column with the count in each animal group
+  summarise(count = n()) %>% 
+  
+  # mutate adds a new column; here we calculate the percentage
+  mutate(percent = round(100*count/sum(count),2)) %>% 
+  
+  # arrange() sorts the data by percent. Since the default sorting is min to max and we would like to see it sorted
+  # in descending order (max to min), we use arrange(desc()) 
+  arrange(desc(percent))
+
+
+animal_rescue %>% 
+  
+  #count does the same thing as group_by and summarise
+  # name = "count" will call the column with the counts "count" ( exciting, I know)
+  # and 'sort=TRUE' will sort them from max to min
+  count(animal_group_parent, name="count", sort=TRUE) %>% 
+  mutate(percent = round(100*count/sum(count),2))
+
+
+```
+
+Do you see anything strange in these tables? 
+
+It is intersting that cats consist of almost half of the animals saved. It definitely further attributes to the stereoytype of cats getting stuck in trees. 
+
+Finally, let us have a loot at the notional cost for rescuing each of these animals. As the LFB says,
+
+> Please note that any cost included is a notional cost calculated based on the length of time rounded up to the nearest hour spent by Pump, Aerial and FRU appliances at the incident and charged at the current Brigade hourly rate.
+
+There is two things we will do:
+
+1. Calculate the mean and median `incident_notional_cost` for each `animal_group_parent`
+2. Plot a boxplot to get a feel for the distribution of `incident_notional_cost` by `animal_group_parent`.
+
+
+Before we go on, however, we need to fix `incident_notional_cost` as it is stored as a `chr`, or character, rather than a number.
+
+```{r, parse_incident_cost,message=FALSE, warning=FALSE}
+
+# what type is variable incident_notional_cost from dataframe `animal_rescue`
+typeof(animal_rescue$incident_notional_cost)
+
+# readr::parse_number() will convert any numerical values stored as characters into numbers
+animal_rescue <- animal_rescue %>% 
+
+  # we use mutate() to use the parse_number() function and overwrite the same variable
+  mutate(incident_notional_cost = parse_number(incident_notional_cost))
+
+# incident_notional_cost from dataframe `animal_rescue` is now 'double' or numeric
+typeof(animal_rescue$incident_notional_cost)
+
+```
+
+Now that incident_notional_cost is numeric, let us quickly calculate summary statistics for each animal group. 
+
+
+```{r, stats_on_incident_cost,message=FALSE, warning=FALSE}
+animal_rescue %>% 
+  
+  # group by animal_group_parent
+  group_by(animal_group_parent) %>% 
+  
+  # filter resulting data, so each group has at least 6 observations
+  filter(n()>6) %>% 
+  
+  # summarise() will collapse all values into 3 values: the mean, median, and count  
+  # we use na.rm=TRUE to make sure we remove any NAs, or cases where we do not have the incident cos
+  
+  summarise(mean_incident_cost = mean (incident_notional_cost, na.rm=TRUE),
+            median_incident_cost = median (incident_notional_cost, na.rm=TRUE),
+            sd_incident_cost = sd (incident_notional_cost, na.rm=TRUE),
+            min_incident_cost = min (incident_notional_cost, na.rm=TRUE),
+            max_incident_cost = max (incident_notional_cost, na.rm=TRUE),
+            count = n()) %>% 
+  
+  # sort the resulting data in descending order. You choose whether to sort by count or mean cost.
+  arrange(desc(mean_incident_cost))
+
+```
+
+Compare the mean and the median for each animal group. waht do you think this is telling us?
+Anything else that stands out? Any outliers?
+
+The mean is pretty consistent with the size of the animal which makes sense. The bigger the animal the more dificult it probably is to rescue. The median is intersting though because it is much less than the mean for the bigger animals. This tells me that our data is left skewed and that some of the larger animals are very expensive to rescue while the majority are much less expensive. The horses specifically have a large difference between the max and min cost of rescue. This tells me that horse rescues are more unpredictable and really depend on the situation at hand. The max horse rescue could also be an outlier that is driving up the mean.
+
+Finally, let us plot a few plots that show the distribution of incident_cost for each animal group.
+
+```{r, plots_on_incident_cost_by_animal_group,message=FALSE, warning=FALSE}
+
+# base_plot
+base_plot <- animal_rescue %>% 
+  group_by(animal_group_parent) %>% 
+  filter(n()>6) %>% 
+  ggplot(aes(x=incident_notional_cost))+
+  facet_wrap(~animal_group_parent, scales = "free")+
+  theme_bw()
+
+base_plot + geom_histogram()
+base_plot + geom_density()
+base_plot + geom_boxplot()
+base_plot + stat_ecdf(geom = "step", pad = FALSE) +
+  scale_y_continuous(labels = scales::percent)
+
+
+
+```
+
+Which of these four graphs do you think best communicates the variability of the `incident_notional_cost` values? Also, can you please tell some sort of story (which animals are more expensive to rescue than others, the spread of values) and speculate about the differences in the patterns.
+
+I would prefer to use the boxplot when understanding and explaining variability in cost and rescue for each animal type. Boxplots, in general, tend to be the best graph when comparing spread between multiple groups. You could also look at the histograph and density graphs but if we were to choose one plot the boxplot shows the difference most obviously. Looking at the boxplots the ferret and rabbit ones are most intersting. One very important thing to note with these graphs is that the x axis does not have the same scale for every animal. Whithout realizing that it looks like the rabbit and ferret have the largest spread but in reality they have the most narrow scale. The cat, dog, bird, deer, and fox all have extreme outliers in the right direction. I would argue that these animals are very common and for different reasons would be some of the first to rescue somewhat regardless of cost. On average, though, we do see a very strong indication that animals are more likely to be rescued if the cost to rescue them is less. One question I think of when looking at this data is if cost really is the reason animals are rescued or not, or if it is something related to cost like time taken to rescue or resources required. Both of these variables will more often than not directly effect cost but would be a different reason than cost alone.
+
+# Submit the assignment
+
+Knit the completed R Markdown file as an HTML document (use the "Knit" button at the top of the script editor window) and upload it to Canvas.
+
+## Details
+
+If you want to, please answer the following
+
+-   Who did you collaborate with: Akshat Kacheria and Lazar Jelic
+-   Approximately how much time did you spend on this problem set: 3 hours
+-   What, if anything, gave you the most trouble: I get excited and skip directions so I need to slow down.

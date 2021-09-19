@@ -1,0 +1,44 @@
+---
+title: "About Me"
+date: '2017-10-31T22:26:09-05:00'
+description: null
+draft: no
+image: null
+keywords: ''
+slug: about
+categories:
+- ''
+- ''
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### Undergraduate Experience
+
+Hi my name is Lauren Wade! I grew up in Southern California in the United States and before attending LBS I have only ever lived in one city. I attended **San Diego State University** to recevie my Bachelore Degree in Statistics. While at SDSU I was involved in many different clubs and societies. 
+
+**Those include:**
+
+* Kappa Alpha Theta Sorority
+
+* Alpha Kappa Psi Business Fraternity 
+
+* Dance Marathon (Fundraisor for Children's Hospital)
+
+* Society of Statisticians and Actuaries
+
+At SDSU I learned a lot about data analytics and how powerful it can be in any facit of a company. I grew very passionate about understanding data and utlitizing this knowledge to help organizations achieve their goals. 
+
+#### Professional Experience
+
+Before attending LBS I have had a few internships and professional experiences that have taught me what I like and more importantly what I *don't like*. 
+* After working as a Teacher's Assistant I learned that I love teaching but that it would be better for me to teach after gaining some professional expereince.
+* My internships with General Atomics and PwC have taught me that I love the analytical side of business but equally enjoy to communicative side. I have learned that communicating with clients and public speaking opportunies arw amoung my favorite aspects of work.
+
+#### More about me
+
+Outside of school and work I absolutely love to travel. I would imagine we are all in the same boat here considering we chose LBS as our graduate school. I've only been to Europe once before coming to London but am so excited to visit as many countries and cities as I can while studing here!
+
+If you want to learn more about my professional and acedemic experiences feel free to look through my linked in. [https://www.linkedin.com/in/lauren-wade-b95395159/]
