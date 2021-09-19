@@ -19,34 +19,6 @@ summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
     </item>
     
     <item>
-      <title>Aliquam</title>
-      <link>https://lauren-wade.netlify.app/blogs/aliquam/</link>
-      <pubDate>Tue, 31 Oct 2017 22:42:51 -0500</pubDate>
-      
-      <guid>https://lauren-wade.netlify.app/blogs/aliquam/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Preprogram Assignment</title>
-      <link>https://lauren-wade.netlify.app/blogs/preprogram/</link>
-      <pubDate>Tue, 31 Oct 2017 22:42:51 -0500</pubDate>
-      
-      <guid>https://lauren-wade.netlify.app/blogs/preprogram/</guid>
-      <description>Task 1: gapminder country comparison You have seen the gapminder dataset that has data on life expectancy, population, and GDP per capita for 142 countries from 1952 to 2007. To get a glimpse of the dataframe, namely to see the variable names, variable types, etc., we use the glimpse function. We also want to have a look at the first 20 rows of data.
-glimpse(gapminder) ## Rows: 1,704 ## Columns: 6 ## $ country &amp;lt;fct&amp;gt; &amp;quot;Afghanistan&amp;quot;, &amp;quot;Afghanistan&amp;quot;, &amp;quot;Afghanistan&amp;quot;, &amp;quot;Afghanistan&amp;quot;, … ## $ continent &amp;lt;fct&amp;gt; Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, Asia, … ## $ year &amp;lt;int&amp;gt; 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997, … ## $ lifeExp &amp;lt;dbl&amp;gt; 28.</description>
-    </item>
-    
-    <item>
-      <title>Salary Assignment</title>
-      <link>https://lauren-wade.netlify.app/blogs/salary/</link>
-      <pubDate>Tue, 31 Oct 2017 22:42:51 -0500</pubDate>
-      
-      <guid>https://lauren-wade.netlify.app/blogs/salary/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Salary Assignment</title>
       <link>https://lauren-wade.netlify.app/projects/salary/</link>
       <pubDate>Tue, 31 Oct 2017 22:42:51 -0500</pubDate>
@@ -65,42 +37,6 @@ glimpse(gapminder) ## Rows: 1,704 ## Columns: 6 ## $ country &amp;lt;fct&amp;gt;
     </item>
     
     <item>
-      <title>Tempus</title>
-      <link>https://lauren-wade.netlify.app/blogs/tempus/</link>
-      <pubDate>Tue, 31 Oct 2017 22:26:13 -0500</pubDate>
-      
-      <guid>https://lauren-wade.netlify.app/blogs/tempus/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>About Me</title>
-      <link>https://lauren-wade.netlify.app/blogs/about/</link>
-      <pubDate>Tue, 31 Oct 2017 22:26:09 -0500</pubDate>
-      
-      <guid>https://lauren-wade.netlify.app/blogs/about/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Contact Me</title>
-      <link>https://lauren-wade.netlify.app/blogs/contact/</link>
-      <pubDate>Tue, 31 Oct 2017 22:26:09 -0500</pubDate>
-      
-      <guid>https://lauren-wade.netlify.app/blogs/contact/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Magna</title>
-      <link>https://lauren-wade.netlify.app/blogs/magna/</link>
-      <pubDate>Tue, 31 Oct 2017 22:26:09 -0500</pubDate>
-      
-      <guid>https://lauren-wade.netlify.app/blogs/magna/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Pre-Program Assignment</title>
       <link>https://lauren-wade.netlify.app/projects/preprogram/</link>
       <pubDate>Tue, 31 Oct 2017 22:26:09 -0500</pubDate>
@@ -111,29 +47,11 @@ glimpse(gapminder) ## Rows: 1,704 ## Columns: 6 ## $ country &amp;lt;fct&amp;gt;
     
     <item>
       <title>Climate Change Project</title>
-      <link>https://lauren-wade.netlify.app/blogs/climate/</link>
-      <pubDate>Tue, 31 Oct 2017 21:28:43 -0500</pubDate>
-      
-      <guid>https://lauren-wade.netlify.app/blogs/climate/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Climate Change Project</title>
       <link>https://lauren-wade.netlify.app/projects/climate/</link>
       <pubDate>Tue, 31 Oct 2017 21:28:43 -0500</pubDate>
       
       <guid>https://lauren-wade.netlify.app/projects/climate/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>Ipsum</title>
-      <link>https://lauren-wade.netlify.app/blogs/ipsum/</link>
-      <pubDate>Tue, 31 Oct 2017 21:28:43 -0500</pubDate>
-      
-      <guid>https://lauren-wade.netlify.app/blogs/ipsum/</guid>
-      <description>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</description>
     </item>
     
   </channel>
