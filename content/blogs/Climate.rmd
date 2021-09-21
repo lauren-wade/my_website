@@ -41,7 +41,7 @@ library(readxl)
 library(vroom)
 ```
 
-
+*This assignment was done in collaboration with Nereid Kwok, Nisa Ozer, Thomas Giannetti-Fakhouri, and Kazmer Nagy-Betegh as a part of a homework assignment in our Applied Statistics class at London Business School taught by Kostis Christodoulou.*
 
 # Climate change and temperature anomalies 
 
