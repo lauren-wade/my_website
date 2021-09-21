@@ -64,8 +64,8 @@ params:
         url: '#'
       - name: About Me
         url: blogs/about
-      - name: Projects
-        url: projects
+      - name: Pre-Program Assignment
+        url: blogs/preprogram
       - name: CV
         url: blogs/cv
     menu: Menu
