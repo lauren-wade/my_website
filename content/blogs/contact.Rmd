@@ -1,0 +1,24 @@
+---
+categories:
+- ""
+- ""
+date: "2017-10-31T22:26:09-05:00"
+description: 
+draft: false
+image: pic09.jpg
+keywords: ""
+slug: contact
+title: Contact Me
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Email Me
+
+[lwade.mam2022\@london.edu](mailto:lwade.mam2022@london.edu){.email}
+
+### Call/Text Me 
+
++44 7878924085
